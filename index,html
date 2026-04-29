@@ -1,0 +1,396 @@
+<DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Vizitka | Shaxsiy sayt</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f9fafc 0%, #f0f2f5 100%);
+            color: #1a1e2b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* header */
+        header {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2d3a4b;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        /* hero */
+        .hero {
+            padding: 70px 0 50px;
+            text-align: center;
+        }
+        .avatar {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, #3b82f6, #c084fc);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 20px 35px -12px rgba(59,130,246,0.3);
+        }
+        .avatar i {
+            font-size: 55px;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #4b5563;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background: #1e293b;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .btn-primary:hover {
+            background: #0f172a;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border: 1.5px solid #cbd5e1;
+            background: white;
+            color: #1e293b;
+        }
+        .btn-outline:hover {
+            border-color: #3b82f6;
+            background: #f8fafc;
+        }
+        /* section umumiy */
+        section {
+            padding: 70px 0;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: #3b82f6;
+            display: block;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 28px 22px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            text-align: center;
+        }
+        .card i {
+            font-size: 2.5rem;
+            color: #3b82f6;
+            margin-bottom: 18px;
+        }
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        /* yangiliklar */
+        .news-item {
+            background: white;
+            border-radius: 28px;
+            padding: 20px 26px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-left: 5px solid #3b82f6;
+        }
+        .news-date {
+            font-size: 0.8rem;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 8px 0 6px;
+        }
+        /* link block - qo'shimcha linklar */
+        .links-block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .social-link {
+            background: white;
+            border-radius: 60px;
+            padding: 12px 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e293b;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        .social-link i {
+            font-size: 1.4rem;
+        }
+        .social-link:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 25px -12px rgba(59,130,246,0.2);
+        }
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 32px 0;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">✨ Vizitka.uz</div>
+            <ul class="nav-links">
+                <li><a href="#home">Bosh sahifa</a></li>
+                <li><a href="#about">Biz haqimizda</a></li>
+                <li><a href="#news">Yangiliklar</a></li>
+                <li><a href="#links">Linklar</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- HOME bo'limi -->
+    <section id="home">
+        <div class="container hero">
+            <div class="avatar">
+                <i class="fas fa-id-card"></i>
+            </div>
+            <h1>Salom, men <span class="logo"Abdulaziz</span></h1>
+            <div class="tagline">Dasturchi | Vizitka yaratuvchi | Innovator</div>
+            <div class="btn-group">
+                <a href="#links" class="btn btn-primary"><i class="fas fa-link"></i> Bog‘lanish</a>
+                <a href="#about" class="btn btn-outline"><i class="fas fa-user"></i> Ko‘proq bilish</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KIMLIGIM, NIMA QILISHIMIZ -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Biz haqimizda</h2>
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-user-astronaut"></i>
+                    <h3>Kimligim?</h3>
+                    <p>Men Abdulaziz Olimov— 1 yillik tajribaga ega frontend va mobil dasturchi. Zamonaviy, chiroyli va tez saytlarni yarataman.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Nima qilamiz?</h3>
+                    <p>Vizitka saytlar, landing page, shaxsiy portfolio, biznes uchun onlayn tashrif qog‘ozi. 100% moslashtirilgan dizayn.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <h3>Xizmatlar</h3>
+                    <p>✅ Sayt yaratish<br>✅ Telegram botlar<br>✅ UI/UX dizayn maslahati<br>✅ Link va ijtimoiy tarmoqlar integratsiyasi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YANGILIKLAR BO'LIMI (dinamik + statik) -->
+    <section id="news" style="background: #ffffffd9;">
+        <div class="container">
+            <h2 class="section-title">📰 So‘nggi yangiliklar</h2>
+            <div id="newsList">
+                <!-- statik yangiliklar, lekin JavaScript orqali link ochish funksiyasi qo'shilgan -->
+                <div class="news-item" data-url="https://kun.uz">
+                    <div class="news-date">25 Aprel, 2026</div>
+                    <div class="news-title">🚀 Yangi loyihamiz ishga tushdi</div>
+                    <p>Vizitka saytlar uchun yangi avlod konstruktorini taqdim etdik. Bosing va o‘qing →</p>
+                </div>
+                <div class="news-item" data-url="https://daryo.uz">
+                    <div class="news-date">18 Aprel, 2026</div>
+                    <div class="news-title">🎯 100 dan ortiq mijoz</div>
+                    <p>Hozirgacha 100 dan ortiq kompaniyalar va shaxslarga vizitka sayt yaratib berdik. Siz ham ro‘yxatda bo‘ling.</p>
+                </div>
+                <div class="news-item" data-url="https://github.com">
+                    <div class="news-date">10 Aprel, 2026</div>
+                    <div class="news-title">💻 Ochiq darslar boshlanadi</div>
+                    <p>Har shanba kuni bepul veb-dasturlash darslari. Ko‘proq ma'lumot uchun yangilikni bosing.</p>
+                </div>
+            </div>
+            <p style="text-align:center; margin-top:28px; color:#4b5563;">📌 Har qanday yangilikka bossangiz, o‘sha havola ochiladi</p>
+        </div>
+    </section>
+
+    <!-- LINKLAR BO'LIMI (sayt va telegram link o'qiydi) -->
+    <section id="links">
+        <div class="container">
+            <h2 class="section-title">🔗 Foydali linklar</h2>
+            <div class="links-block">
+                <!-- Telegram link => t.me ga o'tadi -->
+                <a href="https://t.me/abdulaziz_dastur_chi" target="_blank" class="social-link" id="tgLink">
+                    <i class="fab fa-telegram"></i> Telegram kanal
+                </a>
+                <!-- Sayt link (misol) -->
+                <a href="https://myportfoliouz.netlify.app" target="_blank" class="social-link" id="siteLink">
+                    <i class="fas fa-globe"></i> Mening asosiy saytim
+                </a>
+                <!-- Qo'shimcha ijtimoiy link -->
+                <a href="https://instagram.com/jorabek_design" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+            <div style="text-align:center; margin-top:40px;">
+                <p style="background:#eef2ff; display:inline-block; padding:10px 24px; border-radius:60px;">
+                ⚡ Har qanday linkka bossangiz — yangi oynada ochiladi.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Abdulaziz Vizitka sayti . Barcha huquqlar himoyalangan. | Link o‘tish funksiyasi mavjud</p>
+    </div>
+</footer>
+
+<script>
+    // 1) YANGILIKLARGA LINK O'QISH FUNKSIYASI:
+    // Foydalanuvchi har qanday yangilik ustiga bossa, shu yangilikning data-url dagi link ochiladi
+    const newsItems = document.querySelectorAll('.news-item');
+    newsItems.forEach(item => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', function(e) {
+            // "data-url" atributidan linkni olamiz
+            let url = this.getAttribute('data-url');
+            if(url && url !== '') {
+                window.open(url, '_blank');  // yangi oynada ochiladi
+            } else {
+                // Agar data-url bo'lmasa, fallback yoki ogohlantirish
+                alert("Bu yangilik uchun havola hali qo'shilmagan.");
+            }
+        });
+        // hover effekt
+        item.addEventListener('mouseenter', () => {
+            item.style.transition = '0.2s';
+            item.style.transform = 'translateX(6px)';
+        });
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateX(0)';
+        });
+    });
+
+    // 2) Agar telegram yoki sayt linklari xohlagancha ishlayapti, 
+    //    lekin qo'shimcha xavfsizlik: barcha social-linklar allaqachon href orqali ishlaydi.
+    //    Ammo bu yerda siz istagan bo'lsangiz, JS orqali ham boshqarish mumkin.
+    //    Hech narsa qimaydi, faqat linklarni ochadi.
+    
+    // 3) Alohida, "sayt linki" va "tg link" to'g'ri ishlaydi
+    console.log("Vizitka sayt tayyor! Linklar va yangiliklar ochiladi.");
+</script>
+
+</body>
+</html>
